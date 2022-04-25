@@ -31,44 +31,57 @@
               <a class="nav-link active" href="#">Nobreaks/Estabilizadores</a>
             </li>
           </ul>
+          
+          <ul class="navbar-nav d-flex">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">+ Adicionar</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
     <div class="container">
       <h3 class="text-white mt-5">Nobreaks/Estabilizadores</h3>
+      <table class='table table-hover'>
+        <thead>
+          <tr>
+            <th scope='col'>ID</th>
+            <th scope='col'>Patrimônio</th>
+            <th scope='col'>Marca</th>
+            <th scope='col'>Modelo</th>
+            <th scope='col'>Potência</th>
+            <th scope='col'>Descrição</th>
+            <th scope='col'>Responsável</th>
+            <th scope='col'></th>
+          </tr>
+        </thead>
+        <tbody>
       <?php
 
         require 'ControllerNobreaks.php';
 
         $itens = new ControllerNobreaks();
 
-        echo " <table class='table table-hover'>
-                  <thead>
-                    <tr>
-                      <th scope='col'>ID</th>
-                      <th scope='col'>Patrimônio</th>
-                      <th scope='col'>Marca</th>
-                      <th scope='col'>Modelo</th>
-                      <th scope='col'>Potência</th>
-                      <th scope='col'>Descrição</th>
-                      <th scope='col'>Responsável</th>
-                    </tr>
-                  </thead>
-                  <tbody>";
-
-          foreach($itens->list() as $value) {
-            echo "<tr class='table-dark'>
-                    <td>{$value['id']}</td>
+        foreach($itens->list() as $value) {
+          
+          echo "<form action='./manager.php' method='post'>
+                  <tr class='table-dark'>
+                    <td name={$value['id']}>{$value['id']}</td>
                     <td>{$value['patrimonio']}</td>
                     <td>{$value['marca']}</td>
                     <td>{$value['modelo']}</td>
                     <td>{$value['potencia']}</td>
                     <td>{$value['descricao']}</td>
                     <td>{$value['responsavel']}</td>
+                    <td>
+                      <button type='submit' class='btn btn-primary btn-sm'>Editar</button>
+                      <button type='submit' class='btn btn-outline-danger btn-sm'>Excluir</button>
+                    </td>
                   </tr>
-                  </tbody>
-                </table>";
-          }
+                </form>
+              </tbody>
+            </table>";
+        }
       ?>
     </div>
   </body>
