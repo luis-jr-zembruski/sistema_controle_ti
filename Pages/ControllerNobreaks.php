@@ -29,6 +29,15 @@ class ControllerNobreaks
     return $itens;
   }
 
+  public function editNobreak(int $id): array
+  {
+    $sql = 'select * from nobreaks_estabilizadores where id = '. $id;
+    $result = $this->conexao->query($sql);
+    $item = $result->fetch();
+
+    return $item;
+  }
+
   // public function insert(string $descricao): int
   // {
   //   // $sql = 'insert into nobreaks_estabilizadores(descricao) values(?)';

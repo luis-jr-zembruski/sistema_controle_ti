@@ -34,7 +34,7 @@
           
           <ul class="navbar-nav d-flex">
             <li class="nav-item">
-              <a class="nav-link" href="../index.html">+ Adicionar</a>
+              <a class="nav-link" href="#">+ Adicionar</a>
             </li>
           </ul>
         </div>
@@ -64,9 +64,9 @@
 
         foreach($itens->list() as $value) {
           
-          echo "<form action='./manager.php' method='post'>
+          echo "<form action='./edit_nobreaks_estabilizadores.php' method='post'>
                   <tr class='table-dark'>
-                    <td name={$value['id']}>{$value['id']}</td>
+                    <td>{$value['id']}</td>
                     <td>{$value['patrimonio']}</td>
                     <td>{$value['marca']}</td>
                     <td>{$value['modelo']}</td>
@@ -74,7 +74,7 @@
                     <td>{$value['descricao']}</td>
                     <td>{$value['responsavel']}</td>
                     <td>
-                      <button type='submit' class='btn btn-primary btn-sm'>Editar</button>
+                      <button type='submit' name='id' value={$value['id']} class='btn btn-primary btn-sm'>Editar</button>
                       <button type='submit' class='btn btn-outline-danger btn-sm'>Excluir</button>
                     </td>
                   </tr>
