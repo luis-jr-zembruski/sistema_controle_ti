@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: application/json');
 //api/Nobreaks/1
 
 require_once '../vendor/autoload.php';
