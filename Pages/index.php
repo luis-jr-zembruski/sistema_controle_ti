@@ -21,8 +21,14 @@ if($_GET['url']){
         'status' => 'success',
         'data' => $response
       ));
+      exit;
     } catch (\Exception $e) {
-      echo "Error: " . $e->getMessage();
+      echo json_encode(array(
+        'status' => 'error',
+        'data' => $e->getMessage()),
+        JSON_UNESCAPED_UNICODE
+      );
+      exit;
     }
   }
 }
