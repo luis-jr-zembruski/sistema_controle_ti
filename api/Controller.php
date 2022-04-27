@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class ControllerNobreaks
+class Controller
 {
   private PDO $conexao;
 
@@ -16,27 +16,31 @@ class ControllerNobreaks
     }
   }
 
-  public function list(): array
-  {
-    $sql = 'select * from nobreaks_estabilizadores';
-
-    $itens = [];
-
-    foreach ($this->conexao->query($sql) as $key => $value) {
-      array_push($itens, $value);
-    }
-
-    return $itens;
+  public function getConexao(): PDO {
+    return $this->conexao;
   }
 
-  public function editNobreak(int $id): array
-  {
-    $sql = 'select * from nobreaks_estabilizadores where id = '. $id;
-    $result = $this->conexao->query($sql);
-    $item = $result->fetch();
+  // public function list(): array
+  // {
+  //   $sql = 'select * from nobreaks_estabilizadores';
 
-    return $item;
-  }
+  //   $itens = [];
+
+  //   foreach ($this->conexao->query($sql) as $key => $value) {
+  //     array_push($itens, $value);
+  //   }
+
+  //   return $itens;
+  // }
+
+  // public function editNobreak(int $id): array
+  // {
+  //   $sql = 'select * from nobreaks_estabilizadores where id = '. $id;
+  //   $result = $this->conexao->query($sql);
+  //   $item = $result->fetch();
+
+  //   return $item;
+  // }
 
   // public function insert(string $descricao): int
   // {
