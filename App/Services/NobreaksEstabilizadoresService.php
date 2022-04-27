@@ -1,15 +1,14 @@
 <?php
 
-// require "../Models/NobreaksEstabilizadores.php";
+require "../Models/NobreaksEstabilizadores.php";
 
 class NobreaksEstabilizadoresService {
 
   public function get($id = null){
     if($id !== null){
-      echo 'tchau';
-      // return NobreaksEstabilizadores::get($id);
+      return NobreaksEstabilizadores::select($id);
     } else {
-      echo 'oi';
+      return NobreaksEstabilizadores::get();
     }
   }
 
