@@ -1,13 +1,13 @@
 <?php
 
-require "../Controller.php";
+require "../Conection.php";
 
 class NobreaksEstabilizadores {
 
   private static $table = "nobreaks_estabilizadores";
 
   public static function get(int $id) {
-    $PDO = new Controller();
+    $PDO = new Conection();
     $conexao = $PDO->getConexao();
     $sql = 'SELECT * FROM ' . self::$table . 'WHERE id = :id';
     $stmt = $conexao->prepare($sql);
@@ -16,18 +16,4 @@ class NobreaksEstabilizadores {
 
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
-}
-
-
-
-
-
-
-
-
-
-$itens = [];
-
-foreach ($conexao->query($sql) as $key => $value) {
-  array_push($itens, $value);
 }
