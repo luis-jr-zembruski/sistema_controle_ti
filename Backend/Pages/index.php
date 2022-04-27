@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *'); 
 //api/Nobreaks/1
 
 require_once '../vendor/autoload.php';
