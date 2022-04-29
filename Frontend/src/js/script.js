@@ -4,25 +4,36 @@ const url = 'http://localhost/sistema_controle_ti/Backend/Pages/api/Nobreak/'
 
 let data = null
 
-function getNobreaks() {
-  axios
-    .get(url)
-    .then(response => {
-      data = response.data.data
-
-      makeInterface(data)
-    })
-    .catch(error => {
-      console.log(error)
-    })
+let nobreak = {
+  id: '',
+  patrimonio: '',
+  marca: '',
+  serial_number: '',
+  modelo: '',
+  potencia: '',
+  qtd_tomadas: '',
+  descricao: '',
+  data_aquisicao: '',
+  local_atual: '',
+  responsavel: '',
+  modificado: ''
 }
 
-getNobreaks()
+axios
+  .get(url)
+  .then(response => {
+    nobreak = response.data.data
 
-function makeInterface(data) {
+    makeInterface()
+  })
+  .catch(error => {
+    console.log(error)
+  })
+
+function makeInterface() {
   const table = document.getElementById('nobreaks')
 
-  data.map(data => {
+  nobreak.map(data => {
     table.innerHTML += `
       <tr class='table-dark'>
         <td>${data.id}</td>
@@ -45,7 +56,8 @@ function makeInterface(data) {
 }
 
 function editItem(id) {
-  console.log('Clicado em Editar como id: ' + id)
+  const url = `../../../Frontend/editarnobreaks.html?id=${id}`
+  window.location.href = url
 }
 
 function deleteItem(id) {
